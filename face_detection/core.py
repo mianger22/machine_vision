@@ -27,8 +27,11 @@ while True:
     # Отображение кадра с сообщением
     cv2.imshow('Video', frame)
 
-    # Выход из цикла при нажатии клавиши 'q'
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    # Проверка нажатия клавиши 'q' или закрытие окна
+    key = cv2.waitKey(1)
+    
+    # Если нажата клавиша 'q', выходим из цикла
+    if key == ord('q') or cv2.getWindowProperty('Video', cv2.WND_PROP_VISIBLE) < 1:
         break
 
 # Освобождение ресурсов
